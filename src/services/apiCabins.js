@@ -26,20 +26,41 @@ export async function createEditCabin(newCabin, id) {
   //https://znzhernhedrengqhkazv.supabase.co/storage/v1/object/public/cabin-images//cabin-001.jpg
 
   // 1. create/edit cabin
-  let query = supabase.from("cabins");
+  // let query = supabase.from("cabins");
+
+  // // create
+  // if (!id)
+  //   query = query.from("cabins").insert([{ ...newCabin, image: imagePath }]);
+
+  // // edit
+  // if (id)
+  //   query = query
+  //     .update({ ...newCabin, image: imagePath })
+  //     .eq("id", id)
+  //     .select();
+
+  // const { data, error } = await query.select().single();
+
+  let query;
 
   // create
   if (!id)
-    query = query.from("cabins").insert([{ ...newCabin, image: imagePath }]);
+    query = supabase
+      .from("cabins")
+      .insert([{ ...newCabin, image: imagePath }])
+      .select()
+      .single();
 
   // edit
   if (id)
-    query = query
+    query = supabase
+      .from("cabins")
       .update({ ...newCabin, image: imagePath })
       .eq("id", id)
-      .select();
+      .select()
+      .single();
 
-  const { data, error } = await query.select().single();
+  const { data, error } = await query;
 
   if (error) {
     console.error(error);
