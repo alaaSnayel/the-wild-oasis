@@ -2,7 +2,6 @@ import {
   cloneElement,
   createContext,
   useContext,
-  useEffect,
   useRef,
   useState,
 } from "react";
