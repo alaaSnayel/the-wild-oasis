@@ -98,13 +98,13 @@ function CabinRow({ cabin }) {
             <CreateCabinForm cabinToEdit={cabin} />
           </Modal.Window>
 
-          <Modal.Open>
+          <Modal.Open opens="delete">
             <button disabled={isDeleting}>
               <HiTrash />
             </button>
           </Modal.Open>
 
-          <Modal.Window>
+          <Modal.Window name="delete">
             <ConfirmDelete
               resourceName={name}
               disabled={isDeleting}
