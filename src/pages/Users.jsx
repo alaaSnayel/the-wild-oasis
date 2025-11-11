@@ -4,7 +4,7 @@ import SignupForm from "../features/authentication/SignupForm";
 function NewUsers() {
   return (
     <>
-      <Heading as="h1">Users Comming Soon...</Heading>
+      <Heading as="h1">Users</Heading>
       <SignupForm></SignupForm>
     </>
   );
