@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { createContext, useContext, useState } from "react";
 import { HiEllipsisVertical } from "react-icons/hi2";
 import { createPortal } from "react-dom";
-import { useOutsideClick2 } from "../hooks/useOutsideClick";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const Menu = styled.div`
   display: flex;
@@ -105,7 +105,7 @@ function Toggle({ id }) {
 
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenuContext);
-  const ref = useOutsideClick2(close);
+  const ref = useOutsideClick(close);
 
   if (openId !== id) return null;
 
